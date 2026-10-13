@@ -4,44 +4,33 @@
 
 ## Dasar Teori
 
-Array, pointer, fungsi, prosedur, dan parameter merupakan konsep dasar dalam pemrograman C++ yang digunakan untuk menyimpan, mengakses, dan mengolah data serta membentuk program menjadi bagian-bagian yang lebih terstruktur. Pemahaman terhadap konsep tersebut penting dalam pembelajaran pemrograman C++ karena berkaitan dengan pengelolaan data dan pembuatan program secara terstruktur [1].
+Abstract Data Type (ADT) atau Tipe Data Abstrak adalah tipe data yang terdiri dari definisi tipe (type) dan sekumpulan operasi primitif untuk mengolah tipe tersebut. ADT dapat dilengkapi dengan invarian tipe dan aksioma yang berlaku, serta memungkinkan suatu tipe data dibentuk dari tipe data lainnya. Dalam bahasa C++, ADT dapat diimplementasikan menggunakan struct, fungsi, dan prosedur. Penerapan ADT bertujuan memisahkan definisi tipe data dari implementasi operasinya sehingga program lebih terstruktur dan mudah dikembangkan. Konsep abstraksi data juga mendukung pemisahan antarmuka dari detail implementasi program [1][2].
 
-### A. Array<br/>
+### A. Komponen dan Operasi Primitif ADT<br/>
 
-Array merupakan kumpulan data dengan nama yang sama dan setiap elemennya memiliki tipe data yang sama. Setiap elemen array dapat diakses menggunakan indeks. Dalam C++, array dapat memiliki satu dimensi, dua dimensi, maupun lebih dari dua dimensi. Array satu dimensi menggunakan satu indeks, sedangkan array dua dimensi menggunakan dua indeks dan dapat digunakan untuk menyimpan data dalam bentuk tabel. Array berdimensi banyak menggunakan lebih dari dua indeks sesuai dengan jumlah dimensinya.
+Komponen dan operasi primitif ADT merupakan bagian yang digunakan untuk membentuk, mengakses, mengubah, serta mengolah nilai suatu tipe data. Berdasarkan Modul 3 Struktur Data, operasi primitif mencakup konstruktor atau kreator, selector, prosedur pengubah nilai komponen, validator, destruktor atau dealokator, operasi baca dan tulis, operator relasional, operasi aritmatika, serta operasi konversi. Setiap operasi memiliki fungsi masing-masing untuk memastikan pengolahan data sesuai dengan karakteristik dan aturan tipe ADT.
 
-#### 1. Array Satu Dimensi
-Array satu dimensi merupakan array yang hanya memiliki satu larik data. Deklarasinya menggunakan bentuk tipe_data nama_var[ukuran]. Elemen array disimpan secara berurutan dan indeks pertama dimulai dari 0. [1]
+#### 1. Konstruktor dan Selector
+Konstruktor atau kreator merupakan operasi untuk membentuk nilai suatu tipe data, sedangkan selector digunakan untuk mengakses komponen yang terdapat di dalam tipe data tersebut. Nama konstruktor biasanya diawali dengan Make, sementara nama selector biasanya diawali dengan Get. Kedua operasi ini membantu pembentukan dan pengambilan data sesuai struktur ADT yang telah didefinisikan.
 
-#### 2. Array Dua Dimensi dan Berdimensi Banyak
-Array dua dimensi memiliki dua indeks dan dapat digunakan untuk menyimpan data berbentuk tabel. Sementara itu, array berdimensi banyak memiliki lebih dari dua indeks sehingga dapat digunakan untuk menyimpan data dengan struktur yang lebih kompleks.
+#### 2. Operasi Pengubah dan Validator
+Operasi pengubah digunakan untuk mengubah nilai komponen dalam suatu objek ADT, sedangkan validator digunakan untuk memeriksa apakah nilai memenuhi batasan yang ditentukan. Kedua operasi ini membantu memastikan bahwa pengolahan data sesuai dengan aturan tipe data yang digunakan.
 
-### B. Pointer dan String<br/>
+#### 3. Operasi Pendukung Lainnya
+Operasi pendukung ADT meliputi destruktor atau dealokator untuk menghancurkan objek dan mengelola memori, operasi baca dan tulis untuk masukan dan keluaran, operator relasional untuk membandingkan nilai, operasi aritmatika untuk melakukan perhitungan, serta operasi konversi untuk mengubah nilai antara tipe ADT dan tipe data dasar.
 
-Pointer merupakan variabel yang digunakan untuk menyimpan alamat memori dari variabel lain. Alamat suatu variabel dapat diperoleh menggunakan operator &, sedangkan operator * dapat digunakan untuk mengakses nilai yang ditunjuk oleh pointer. Pointer juga memiliki hubungan dengan array karena pointer dapat menunjuk alamat elemen array dan digunakan untuk mengakses elemen-elemen tersebut.
+### B. Implementasi ADT dalam Bahasa C++<br/>
 
-String merupakan data yang digunakan untuk menyimpan teks atau kumpulan karakter. Dalam C++, string dapat direpresentasikan sebagai array karakter yang diakhiri dengan karakter null \0. Setiap karakter dapat diakses menggunakan indeks, sedangkan pointer karakter dapat digunakan untuk menunjuk karakter pada string.
+Implementasi ADT dalam bahasa C++ dilakukan dengan membagi program menjadi file definisi tipe dan deklarasi operasi, file realisasi fungsi dan prosedur, serta file program utama (driver). Berdasarkan Modul 3 Struktur Data, pembagian tersebut bertujuan memisahkan spesifikasi tipe dan operasi dari kode implementasinya. Dengan demikian, program utama dapat menggunakan operasi yang telah disediakan tanpa perlu menuliskan kembali seluruh proses di dalamnya.
 
-#### 1. Pointer dan Array
-Pointer dapat menunjuk ke elemen pertama array dan digunakan untuk mengakses elemen berikutnya melalui operasi pointer. Jika pointer menunjuk ke a[0], maka *(pa + 1) dapat digunakan untuk mengakses isi a[1].
+#### 1. Definisi Tipe dan Deklarasi Operasi (.h)
+File header (.h) berisi definisi tipe data dan deklarasi fungsi atau prosedur yang disediakan oleh ADT. Dalam bahasa C++, tipe data dapat didefinisikan menggunakan struct, sedangkan fungsi dan prosedur dideklarasikan melalui prototipe. Spesifikasi fungsi mencakup nama, domain, range, dan prasyarat jika ada, sedangkan spesifikasi prosedur mencakup keadaan awal, keadaan akhir, dan proses yang dilakukan.
 
-#### 2. String dan Pointer
-String pada dasarnya merupakan kumpulan karakter. Array karakter dan pointer karakter memiliki hubungan dalam penyimpanan dan pengaksesan string. Array karakter menyimpan karakter secara langsung, sedangkan pointer dapat menunjuk ke karakter pertama dari suatu string.
+#### 2. Realisasi Operasi (.cpp)
+File implementasi (.cpp) berisi kode program untuk merealisasikan fungsi dan prosedur yang telah dideklarasikan dalam file header. Pada contoh ADT mahasiswa, fungsi inputMhs() digunakan untuk memasukkan data mahasiswa, sedangkan fungsi rata2() digunakan untuk menghitung nilai rata-rata dari dua nilai mahasiswa. Realisasi operasi ini memungkinkan fungsi dan prosedur digunakan kembali oleh program utama.
 
-### C. Fungsi, Prosedur, dan Parameter<br/>
-
-Fungsi merupakan blok kode yang dibuat untuk menjalankan tugas tertentu. Penggunaan fungsi dapat membuat program lebih terstruktur dan mengurangi pengulangan kode. Fungsi dapat menerima masukan melalui parameter dan dapat mengembalikan nilai melalui return. Sementara itu, prosedur dalam C++ dapat diterapkan menggunakan fungsi bertipe void, yaitu fungsi yang menjalankan tugas tertentu tetapi tidak mengembalikan nilai.
-
-Parameter fungsi dibedakan menjadi parameter formal dan parameter aktual. Parameter formal merupakan variabel yang dituliskan ketika fungsi didefinisikan, sedangkan parameter aktual merupakan nilai atau variabel yang diberikan ketika fungsi dipanggil. Parameter dapat dilewatkan dengan beberapa cara, yaitu call by value, call by pointer, dan call by reference. Pada call by value, nilai parameter disalin sehingga perubahan di dalam fungsi tidak mengubah variabel asli. Pada call by pointer dan call by reference, fungsi dapat mengubah nilai variabel yang berada di luar fungsi.
-
-#### 1. Fungsi dan Prosedur
-Fungsi digunakan untuk menjalankan tugas tertentu dan dapat menghasilkan nilai keluaran, sedangkan prosedur atau fungsi void digunakan untuk menjalankan tugas tanpa mengembalikan nilai. [1]
-
-#### 2. Parameter Fungsi
-Parameter digunakan untuk memberikan data kepada fungsi. Parameter formal berada pada definisi fungsi, sedangkan parameter aktual diberikan saat fungsi dipanggil. [1]
-
-#### 3. Cara Melewatkan Parameter
-Parameter dapat dilewatkan menggunakan call by value, call by pointer, atau call by reference. Perbedaan ketiganya terletak pada cara data diberikan kepada fungsi dan apakah perubahan nilai di dalam fungsi dapat memengaruhi variabel asal.
+#### 3. Program Utama (Driver)
+File main.cpp merupakan program utama yang menggunakan ADT melalui file header. Program utama membuat variabel bertipe ADT, memanggil fungsi atau prosedur yang tersedia, serta menampilkan hasil pengolahan data. Pemisahan file header, implementasi, dan program utama membuat program lebih modular karena deklarasi tipe data, realisasi operasi, dan penggunaan ADT ditempatkan pada bagian yang berbeda.
 
 ## Guided
 
@@ -102,68 +91,68 @@ int main(){
 }
 ```
 
-Program tersebut digunakan untuk menginputkan lima buah nilai siswa dan menampilkan data nilai tersebut serta data nilai tahunan yang disimpan dalam array 2 dimensi. Program menggunakan konstanta MAX dengan nilai 5, sehingga array nilai memiliki lima elemen dan array nilai_tahun memiliki ukuran 5 × 5. Pertama, program meminta pengguna untuk memasukkan lima nilai menggunakan perulangan for, kemudian setiap nilai yang dimasukkan disimpan ke dalam array nilai[i]. Setelah semua nilai dimasukkan, program menampilkan kembali data nilai siswa dengan mengakses setiap elemen array nilai menggunakan perulangan for. Selanjutnya, program menampilkan isi array 2 dimensi nilai_tahun menggunakan dua perulangan for, yaitu perulangan pertama untuk baris dan perulangan kedua untuk kolom. Setiap elemen pada nilai_tahun[i][j] kemudian ditampilkan ke layar.
+Program tersebut menggunakan konsep ADT. Program digunakan untuk menginputkan data seorang mahasiswa dan menampilkan nilai rata-rata dari dua mata kuliah. Program dibagi menjadi tiga file, yaitu mahasiswa.h, mahasiswa.cpp, dan main.cpp. File mahasiswa.h berisi deklarasi struktur mahasiswa dengan atribut nim, nilai1, dan nilai2, serta deklarasi fungsi inputMhs() dan rata2(). File mahasiswa.cpp berisi implementasi kedua fungsi tersebut. Prosedur inputMhs() digunakan untuk memasukkan NIM dan dua nilai mahasiswa, sedangkan fungsi rata2() digunakan untuk menghitung rata-rata dari nilai1 dan nilai2 dengan menjumlahkan keduanya kemudian membaginya dengan 2. Pada file main.cpp, program membuat variabel mhs, memanggil inputMhs(mhs) untuk memasukkan data, kemudian memanggil rata2(mhs) untuk menghitung dan menampilkan nilai rata-rata mahasiswa ke layar.
 
 ## Unguided
 
-### 1. Buat program yang dapat menyimpan data mahasiswa (max. 10) ke dalam sebuah array dengan field nama, nim, uts, uas, tugas, dan nilai akhir. Nilai akhir diperoleh dari FUNGSI dengan rumus 0.3*uts+0.4*uas+0.3*tugas.
+### 1. Buat program yang dapat menyimpan data mahasiswa (max. 10) ke dalam sebuah array dengan field nama, nim, uts, uas, tugas, dan nilai akhir. Nilai akhir diperoleh dari FUNGSI dengan rumus 0.3 * uts + 0.4 * uas + 0.3 * tugas.
 
 ```C++
 source code unguided 1
 
 #include <iostream>
 using namespace std;
-#define N 3
+
+struct Mahasiswa {
+    char nama[50];
+    char nim[20];
+    float uts;
+    float uas;
+    float tugas;
+    float nilaiAkhir;
+};
+
+float hitungNilaiAkhir(float uts, float uas, float tugas) {
+    return 0.3 * uts + 0.4 * uas + 0.3 * tugas;
+}
 
 int main() {
-    int A[N][N], B[N][N];
-    int tambah[N][N], kurang[N][N], kali[N][N];
-    cout << "Masukkan elemen matriks A (3x3):" << endl;
-    for (int i = 0; i < N; i++) {
-        for (int j = 0; j < N; j++) {
-            cin >> A[i][j];
-        }
+    Mahasiswa mhs[10];
+    int n;
+    cout << "DATA NILAI MAHASISWA" << endl;
+    cout << "Masukkan jumlah mahasiswa (maks. 10): ";
+    cin >> n;
+    if (n < 1 || n > 10) {
+        cout << "Jumlah mahasiswa harus 1 sampai 10!" << endl;
+        return 0;
     }
-    cout << "Masukkan elemen matriks B (3x3):" << endl;
-    for (int i = 0; i < N; i++) {
-        for (int j = 0; j < N; j++) {
-            cin >> B[i][j];
-        }
+    for (int i = 0; i < n; i++) {
+        cout << "\nData mahasiswa ke-" << i + 1 << endl;
+        cout << "Nama : ";
+        cin >> mhs[i].nama;
+        cout << "NIM : ";
+        cin >> mhs[i].nim;
+        cout << "Nilai UTS : ";
+        cin >> mhs[i].uts;
+        cout << "Nilai UAS : ";
+        cin >> mhs[i].uas;
+        cout << "Nilai Tugas : ";
+        cin >> mhs[i].tugas;
+        mhs[i].nilaiAkhir = hitungNilaiAkhir(
+            mhs[i].uts,
+            mhs[i].uas,
+            mhs[i].tugas
+        );
     }
-    for (int i = 0; i < N; i++) {
-        for (int j = 0; j < N; j++) {
-            tambah[i][j] = A[i][j] + B[i][j];
-            kurang[i][j] = A[i][j] - B[i][j];
-        }
-    }
-    for (int i = 0; i < N; i++) {
-        for (int j = 0; j < N; j++) {
-            kali[i][j] = 0;
-            for (int k = 0; k < N; k++) {
-                kali[i][j] += A[i][k] * B[k][j];
-            }
-        }
-    }
-    cout << "\nHasil Penjumlahan Matriks:" << endl;
-    for (int i = 0; i < N; i++) {
-        for (int j = 0; j < N; j++) {
-            cout << tambah[i][j] << " ";
-        }
-        cout << endl;
-    }
-    cout << "\nHasil Pengurangan Matriks:" << endl;
-    for (int i = 0; i < N; i++) {
-        for (int j = 0; j < N; j++) {
-            cout << kurang[i][j] << " ";
-        }
-        cout << endl;
-    }
-    cout << "\nHasil Perkalian Matriks:" << endl;
-    for (int i = 0; i < N; i++) {
-        for (int j = 0; j < N; j++) {
-            cout << kali[i][j] << " ";
-        }
-        cout << endl;
+    cout << "\nDAFTAR NILAI MAHASISWA" << endl;
+    for (int i = 0; i < n; i++) {
+        cout << "\nMahasiswa ke-" << i + 1 << endl;
+        cout << "Nama : " << mhs[i].nama << endl;
+        cout << "NIM : " << mhs[i].nim << endl;
+        cout << "UTS : " << mhs[i].uts << endl;
+        cout << "UAS : " << mhs[i].uas << endl;
+        cout << "Tugas : " << mhs[i].tugas << endl;
+        cout << "Nilai Akhir : " << mhs[i].nilaiAkhir << endl;
     }
     return 0;
 }
@@ -173,49 +162,79 @@ int main() {
 
 ##### Output 1
 
-![Screenshot Output Unguided 1_1](https://github.com/frzhwaa/109082500200_ZirlynailaFairuzahwa_STRUKDAT_MODUL3/blob/main/Modul3/output/soal1.png)
+![Screenshot Output Unguided 1_1](https://github.com/frzhwaa/109082500200_ZirlynailaFairuzahwa_STRUKDAT_MODUL3/blob/main/Modul3/output/soal1A.png)
 
-Program tersebut digunakan untuk melakukan tiga operasi pada dua buah matriks berukuran 3×3, yaitu penjumlahan, pengurangan, dan perkalian matriks. Program menggunakan konstanta N dengan nilai 3 sehingga array A, B, tambah, kurang, dan kali masing-masing memiliki ukuran 3×3. Pertama, program meminta pengguna untuk memasukkan sembilan elemen matriks A menggunakan dua perulangan for, yaitu perulangan pertama untuk menentukan baris dan perulangan kedua untuk menentukan kolom. Setelah itu, program melakukan hal yang sama untuk memasukkan sembilan elemen matriks B. Selanjutnya, program melakukan penjumlahan dan pengurangan dengan mengambil elemen pada posisi baris dan kolom yang sama, yaitu A[i][j] + B[i][j] untuk penjumlahan dan A[i][j] - B[i][j] untuk pengurangan, kemudian hasilnya disimpan ke dalam array tambah dan kurang. Untuk perkalian matriks, program menggunakan tiga perulangan for. Variabel i digunakan untuk menentukan baris matriks A, j untuk menentukan kolom matriks B, dan k digunakan untuk menghitung perkalian setiap elemen yang diperlukan. Hasil perkalian kemudian disimpan ke dalam array kali. Setelah seluruh proses selesai, program menampilkan hasil penjumlahan, pengurangan, dan perkalian matriks ke layar.
+##### Output 2
 
-Sebagai contoh, ketika matriks A yang dimasukkan adalah 1 2 3, 4 5 6, 7 8 9 dan matriks B adalah 9 8 7, 6 5 4, 3 2 1, maka hasil penjumlahannya adalah 10 10 10, 10 10 10, dan 10 10 10. Hasil pengurangannya adalah -8 -6 -4, -2 0 2, dan 4 6 8. Untuk perkalian matriks, program menghitung setiap elemen hasil berdasarkan perkalian elemen pada baris matriks A dengan elemen pada kolom matriks B, sehingga menghasilkan 30 24 18, 84 69 54, dan 138 114 90. Setelah semua operasi selesai, ketiga hasil tersebut ditampilkan dengan keterangan "Hasil Penjumlahan Matriks", "Hasil Pengurangan Matriks", dan "Hasil Perkalian Matriks".
+![Screenshot Output Unguided 1_2](https://github.com/frzhwaa/109082500200_ZirlynailaFairuzahwa_STRUKDAT_MODUL3/blob/main/Modul3/output/soal1B.png)
+
+Program tersebut digunakan untuk menyimpan dan menampilkan data nilai maksimal 10 mahasiswa menggunakan array of struct. Struktur Mahasiswa memiliki enam atribut, yaitu nama, nim, uts, uas, tugas, dan nilaiAkhir. Selanjutnya, fungsi hitungNilaiAkhir() digunakan untuk menghitung nilai akhir mahasiswa dengan rumus 0,3 * UTS + 0,4 * UAS + 0,3 * tugas. Pada fungsi main(), program membuat array mhs[10] untuk menyimpan data mahasiswa dan variabel n untuk menentukan jumlah mahasiswa yang akan dimasukkan. Program meminta pengguna memasukkan jumlah mahasiswa, kemudian memeriksa apakah jumlah tersebut berada dalam rentang 1 sampai 10. Jika jumlah tidak sesuai, program menampilkan pesan kesalahan dan berhenti. Jika jumlah sesuai, program menggunakan perulangan for untuk memasukkan nama, NIM, nilai UTS, nilai UAS, dan nilai tugas setiap mahasiswa. Setelah data nilai dimasukkan, fungsi hitungNilaiAkhir() dipanggil untuk menghitung nilai akhir dan menyimpannya ke atribut nilaiAkhir. Setelah seluruh data mahasiswa selesai dimasukkan, program menggunakan perulangan for kedua untuk menampilkan kembali seluruh data mahasiswa beserta nilai akhirnya ke layar.
+
+Sebagai contoh, ketika saya memasukkan jumlah mahasiswa sebanyak 3 orang, program akan meminta data setiap mahasiswa secara bergantian. Mahasiswa pertama bernama Zahwa dengan NIM 109082500200 memiliki nilai UTS 100, UAS 90, dan tugas 95. Nilai akhirnya dihitung menjadi 0,3 × 100 + 0,4 × 90 + 0,3 × 95 = 94,5. Mahasiswa kedua bernama Diva dengan NIM 109082500111 memiliki nilai UTS 95, UAS 97, dan tugas 90, sehingga nilai akhirnya adalah 94,3. Mahasiswa ketiga bernama Raysa dengan NIM 109082500222 memiliki nilai UTS 90, UAS 92, dan tugas 98, sehingga nilai akhirnya adalah 93,2. Setelah semua perhitungan selesai, program menampilkan data ketiga mahasiswa dengan keterangan nama, NIM, UTS, UAS, tugas, dan nilai akhir.
 
 ### 2. Buatlah ADT pelajaran sebagai berikut di dalam file "pelajaran.h":
-### Type pelajaran < <br>namaMapel : string <br>kodeMapel : string <br>> <br>function create_pelajaran( namapel : string, <br>kodepel : string ) → pelajaran <br>procedure tampil_pelajaran( input pel : pelajaran )
+### Type pelajaran < <br>namaMapel : string <br>kodeMapel : string <br>> <br>function create_pelajaran( namapel : string, kodepel : string ) → pelajaran <br>procedure tampil_pelajaran( input pel : pelajaran )
 ### Buatlah implementasi ADT pelajaran pada file "pelajaran.cpp"
 ### Cobalah hasil implementasi ADT pada file "main.cpp"
 ### using namespace std; <br>int main(){ <br>string namapel = "Struktur Data"; <br>string kodepel = "STD"; <br>pelajaran pel = create_pelajaran(namapel,kodepel); <br>tampil_pelajaran(pel); <br>return 0; <br>}
 
 ```C++
-source code unguided 2
+source code pelajaran.h
 
-#include <iostream>
+#ifndef PELAJARAN_H_INCLUDED
+#define PELAJARAN_H_INCLUDED
+
+#include <string>
 using namespace std;
 
-void tukar(int *x, int *y, int *z);
+struct pelajaran {
+    string namaMapel;
+    string kodeMapel;
+};
 
-int main(){
-    int x, y, z;
-    x = 10;
-    y = 20;
-    z = 30;
-    cout << "Nilai sebelum ditukar" << endl;
-    cout << "x = " << x << endl;
-    cout << "y = " << y << endl;
-    cout << "z = " << z << endl;
-    tukar(&x, &y, &z);
-    cout << "\nNilai setelah ditukar" << endl;
-    cout << "x = " << x << endl;
-    cout << "y = " << y << endl;
-    cout << "z = " << z << endl;
-    return 0;
+pelajaran create_pelajaran(string namapel, string kodepel);
+void tampil_pelajaran(pelajaran pel);
+
+#endif
+```
+
+```C++
+source code pelajaran.cpp
+
+#include <iostream>
+#include "pelajaran.h"
+
+using namespace std;
+
+pelajaran create_pelajaran(string namapel, string kodepel) {
+    pelajaran pel;
+    pel.namaMapel = namapel;
+    pel.kodeMapel = kodepel;
+    return pel;
 }
 
-void tukar(int *x, int *y, int *z){
-    int temp;
-    temp = *z;
-    *z = *y;
-    *y = *x;
-    *x = temp;
+void tampil_pelajaran(pelajaran pel) {
+    cout << "Nama Mata Pelajaran: " << pel.namaMapel << endl;
+    cout << "Kode Mata Pelajaran: " << pel.kodeMapel << endl;
+}
+```
+
+```C++
+source code main.cpp
+
+#include <iostream>
+#include "pelajaran.h"
+
+using namespace std;
+
+int main() {
+    string namapel = "Struktur Data";
+    string kodepel = "STD";
+
+    pelajaran pel = create_pelajaran(namapel, kodepel);
+    tampil_pelajaran(pel);
+
+    return 0;
 }
 ```
 
@@ -225,85 +244,100 @@ void tukar(int *x, int *y, int *z){
 
 ![Screenshot Output Unguided 2_1](https://github.com/frzhwaa/109082500200_ZirlynailaFairuzahwa_STRUKDAT_MODUL3/blob/main/Modul3/output/soal2.png)
 
-Program tersebut digunakan untuk menukar nilai dari tiga buah variabel menggunakan pointer. Pada awal program terdapat void tukar(int *x, int *y, int *z) yang menunjukkan bahwa prosedur tukar menerima tiga parameter berupa pointer bertipe int. Di dalam main, terdapat tiga variabel yaitu x,y, dan z yang masing-masing diberi nilai 10, 20, dan 30. Nilai tersebut kemudian ditampilkan sebagai nilai sebelum ditukar. Setelah itu, program memanggil prosedur tukar(&x, &y, &z) dengan mengirimkan alamat dari ketiga variabel menggunakan operator &. Di dalam prosedur tukar, variabel temp digunakan sebagai tempat penyimpanan sementara. Nilai yang ditunjuk oleh z disimpan ke temp, kemudian nilai yang ditunjuk oleh y dipindahkan ke z, nilai yang ditunjuk oleh x dipindahkan ke y, dan nilai yang sebelumnya disimpan di temp dipindahkan ke x. Karena parameter yang diberikan berupa alamat, perubahan tersebut langsung memengaruhi nilai asli x, y, dan z. Setelah prosedur selesai, program menampilkan nilai ketiga variabel setelah ditukar.
+Program tersebut digunakan untuk membuat Abstract Data Type (ADT) pelajaran yang menyimpan nama mata pelajaran dan kode mata pelajaran. Program dibagi menjadi tiga file, yaitu pelajaran.h, pelajaran.cpp, dan main.cpp. File pelajaran.h berisi deklarasi struktur pelajaran yang memiliki dua atribut, yaitu namaMapel bertipe string dan kodeMapel bertipe string, serta deklarasi fungsi create_pelajaran() dan prosedur tampil_pelajaran(). Selanjutnya, file pelajaran.cpp berisi implementasi kedua primitif tersebut. Fungsi create_pelajaran() digunakan untuk membuat objek pelajaran, kemudian mengisi atribut namaMapel dan kodeMapel berdasarkan parameter yang diterima, lalu mengembalikan objek tersebut. Sementara itu, prosedur tampil_pelajaran() digunakan untuk menampilkan nama dan kode mata pelajaran menggunakan perintah cout. Pada file main.cpp, program membuat variabel namapel dengan nilai "Struktur Data" dan kodepel dengan nilai "STD". Kedua variabel tersebut kemudian digunakan sebagai parameter saat memanggil fungsi create_pelajaran(), dan hasilnya disimpan ke dalam variabel pel. Setelah itu, prosedur tampil_pelajaran(pel) dipanggil untuk menampilkan data mata pelajaran ke layar.
 
-Sebagai contoh, sebelum proses pertukaran dilakukan, nilai x = 10, y = 20, dan z = 30. Ketika prosedur tukar(&x, &y, &z) dijalankan, nilai z yaitu 30 terlebih dahulu disimpan ke dalam temp. Kemudian nilai y yaitu 20 dipindahkan ke z, sehingga z menjadi 20. Selanjutnya nilai x yaitu 10 dipindahkan ke y, sehingga y menjadi 10. Terakhir, nilai 30 yang tersimpan di temp dipindahkan ke x, sehingga x menjadi 30. Dengan demikian, setelah proses pertukaran selesai, nilai menjadi x = 30, y = 10, dan z = 20.
+Sebagai contoh, ketika program dijalankan, variabel namapel berisi "Struktur Data" dan kodepel berisi "STD". Fungsi create_pelajaran() membentuk objek pel yang menyimpan kedua nilai tersebut pada atribut namaMapel dan kodeMapel. Selanjutnya, prosedur tampil_pelajaran() menampilkan hasil berikut:
+Nama Mata Pelajaran: Struktur Data
+Kode Mata Pelajaran: STD
+Dengan demikian, program berhasil menerapkan konsep ADT dengan memisahkan deklarasi tipe dan primitif pada file pelajaran.h, implementasi primitif pada file pelajaran.cpp, serta pemanggilan fungsi dan prosedur pada file main.cpp.
 
 ### 3. Buatlah program dengan ketentuan : <br>- 2 buah array 2D integer berukuran 3x3 dan 2 buah pointer integer <br>- fungsi/prosedur yang menampilkan isi sebuah array integer 2D <br>- fungsi/prosedur yang akan menukarkan isi dari 2 array integer 2D pada posisi tertentu <br>- fungsi/prosedur yang akan menukarkan isi dari variabel yang ditunjuk oleh 2 buah pointer
 
 ```C++
-source code unguided 3
+source code array.h
+
+#ifndef ARRAY_H_INCLUDED
+#define ARRAY_H_INCLUDED
+
+void tampilArray(int A[3][3]);
+void tukarArray(int A[3][3], int B[3][3], int baris, int kolom);
+void tukarPointer(int *p1, int *p2);
+
+#endif
+```
+
+```C++
+source code array.cpp
 
 #include <iostream>
+#include "array.h"
+
 using namespace std;
 
-int maksimum(int arr[], int n);
-int minimum(int arr[], int n);
-void rataRata(int arr[], int n, float &rata);
-int main(){
-    int arrA[10] = {48, 2, 7, 21, 5, 20, 77, 9, 10, 1};
-    int pilihan;
-    int hasil;
-    float rata;
-    cout << "--- Menu Program Array ---" << endl;
-    cout << "1. Tampilkan isi array" << endl;
-    cout << "2. cari nilai maksimum" << endl;
-    cout << "3. cari nilai minimum" << endl;
-    cout << "4. Hitung nilai rata - rata" << endl;
-    cout << "Pilih menu : ";
-    cin >> pilihan;
-    if(pilihan == 1){
-        cout << "Isi array : ";
-        for(int i = 0; i < 10; i++){
-            cout << arrA[i] << " ";
+void tampilArray(int A[3][3]) {
+    for (int i = 0; i < 3; i++) {
+        for (int j = 0; j < 3; j++) {
+            cout << A[i][j] << "\t";
         }
         cout << endl;
     }
-    else if(pilihan == 2){
-        hasil = maksimum(arrA, 10);
-        cout << "Nilai maksimum = " << hasil << endl;
-    }
-    else if(pilihan == 3){
-        hasil = minimum(arrA, 10);
-        cout << "Nilai minimum = " << hasil << endl;
-    }
-    else if(pilihan == 4){
-        rataRata(arrA, 10, rata);
-        cout << "Nilai rata - rata = " << rata << endl;
-    }
-    else{
-        cout << "Pilihan tidak tersedia." << endl;
-    }
+}
+
+void tukarArray(int A[3][3], int B[3][3], int baris, int kolom) {
+    int temp = A[baris][kolom];
+    A[baris][kolom] = B[baris][kolom];
+    B[baris][kolom] = temp;
+}
+
+void tukarPointer(int *p1, int *p2) {
+    int temp = *p1;
+    *p1 = *p2;
+    *p2 = temp;
+}
+```
+
+```C++
+source code main.cpp
+
+#include <iostream>
+#include "array.h"
+
+using namespace std;
+
+int main() {
+    int A[3][3] = {
+        {1, 2, 3},
+        {4, 5, 6},
+        {7, 8, 9}
+    };
+    int B[3][3] = {
+        {10, 20, 30},
+        {40, 50, 60},
+        {70, 80, 90}
+    };
+    cout << "Array A sebelum ditukar:" << endl;
+    tampilArray(A);
+    cout << "\nArray B sebelum ditukar:" << endl;
+    tampilArray(B);
+    tukarArray(A, B, 1, 1);
+    cout << "\nArray A setelah pertukaran posisi [1][1]:" << endl;
+    tampilArray(A);
+    cout << "\nArray B setelah pertukaran posisi [1][1]:" << endl;
+    tampilArray(B);
+    int x = 100;
+    int y = 200;
+    int *p1 = &x;
+    int *p2 = &y;
+    cout << "\nSebelum pertukaran pointer:" << endl;
+    cout << "x = " << x << endl;
+    cout << "y = " << y << endl;
+    tukarPointer(p1, p2);
+    cout << "\nSetelah pertukaran pointer:" << endl;
+    cout << "x = " << x << endl;
+    cout << "y = " << y << endl;
     return 0;
 }
 
-int maksimum(int arr[], int n){
-    int max = arr[0];
-    for(int i = 1; i < n; i++){
-        if(arr[i] > max){
-            max = arr[i];
-        }
-    }
-    return max;
-}
-
-int minimum(int arr[], int n){
-    int min = arr[0];
-    for(int i = 1; i < n; i++){
-        if(arr[i] < min){
-            min = arr[i];
-        }
-    }
-    return min;
-}
-
-void rataRata(int arr[], int n, float &rata){
-    int jumlah = 0;
-    for(int i = 0; i < n; i++){
-        jumlah = jumlah + arr[i];
-    }
-    rata = (float)jumlah / n;
-}
 ```
 
 ### Output Unguided 3 :
@@ -312,22 +346,20 @@ void rataRata(int arr[], int n, float &rata){
 
 ![Screenshot Output Unguided 3_1](https://github.com/frzhwaa/109082500200_ZirlynailaFairuzahwa_STRUKDAT_MODUL3/blob/main/Modul3/output/soal3.png)
 
-Program tersebut digunakan untuk menampilkan isi array, mencari nilai maksimum, mencari nilai minimum, dan menghitung nilai rata-rata dari sebuah array. Pada awal program terdapat tiga prototype, yaitu fungsi maksimum, fungsi minimum, dan prosedur rataRata. Array arrA berisi 10 nilai, yaitu 48, 2, 7, 21, 5, 20, 77, 9, 10, dan 1. Program kemudian menampilkan menu yang terdiri dari empat pilihan dan meminta pengguna memasukkan pilihan yang disimpan ke dalam variabel pilihan. Jika pengguna memilih menu 1, program menampilkan seluruh isi array menggunakan perulangan for. Jika memilih menu 2, program memanggil fungsi maksimum(arrA, 10) untuk mencari nilai terbesar dan hasilnya disimpan ke dalam variabel hasil. Jika memilih menu 3, program memanggil fungsi minimum(arrA, 10) untuk mencari nilai terkecil. Jika memilih menu 4, program memanggil prosedur rataRata(arrA, 10, rata) untuk menghitung nilai rata-rata, kemudian hasilnya ditampilkan melalui variabel rata.
+Program tersebut digunakan untuk melakukan tiga operasi pada dua buah array integer 2D berukuran 3×3 dan dua buah pointer integer, yaitu menampilkan isi array, menukarkan elemen pada posisi tertentu dari dua array, serta menukarkan nilai dari dua variabel yang ditunjuk oleh pointer. Program dibagi menjadi tiga file, yaitu array.h yang berisi deklarasi fungsi dan prosedur, array.cpp yang berisi implementasi fungsi dan prosedur, serta main.cpp yang digunakan untuk menjalankan program. Pertama, program membuat array A yang berisi nilai 1 sampai 9 dan array B yang berisi nilai 10, 20, 30, 40, 50, 60, 70, 80, dan 90. Selanjutnya, prosedur tampilArray() digunakan untuk menampilkan isi array dengan dua perulangan for, yaitu perulangan pertama untuk menentukan baris dan perulangan kedua untuk menentukan kolom. Setelah itu, fungsi tukarArray() digunakan untuk menukarkan elemen dari kedua array pada posisi tertentu, yaitu [1][1]. Proses pertukaran dilakukan dengan menyimpan nilai A[baris][kolom] ke dalam variabel sementara temp, kemudian mengganti nilai A dengan nilai B pada posisi tersebut, dan terakhir mengisi nilai B dengan nilai yang tersimpan di temp. Selanjutnya, program membuat dua variabel integer, yaitu x dengan nilai 100 dan y dengan nilai 200, serta dua pointer p1 dan p2 yang masing-masing menunjuk ke variabel x dan y. Prosedur tukarPointer() kemudian digunakan untuk menukarkan nilai kedua variabel tersebut menggunakan operator dereferensi *, sehingga nilai yang ditunjuk oleh pointer pertama dan kedua dapat ditukar. Setelah seluruh proses selesai, program menampilkan kembali isi kedua array dan nilai variabel setelah pertukaran.
 
-Pada fungsi maksimum, nilai pertama array yaitu arr[0] digunakan sebagai nilai maksimum sementara. Selanjutnya, perulangan for membandingkan setiap elemen berikutnya dengan nilai max. Jika ditemukan nilai yang lebih besar, maka nilai max diperbarui dan setelah seluruh elemen diperiksa, fungsi mengembalikan nilai tersebut menggunakan return. Pada fungsi minimum, prosesnya hampir sama, tetapi setiap elemen dibandingkan untuk mencari nilai yang paling kecil. Sementara itu, prosedur rataRata menggunakan variabel jumlah untuk menjumlahkan seluruh elemen array menggunakan perulangan for. Setelah seluruh nilai dijumlahkan, hasilnya dibagi dengan jumlah elemen n dan disimpan ke dalam parameter reference rata, sehingga nilai tersebut dapat digunakan kembali di dalam main.
-
-Sebagai contoh, ketika pengguna memilih menu 1, program akan menampilkan isi array yaitu 48 2 7 21 5 20 77 9 10 1. Jika pengguna memilih menu 2, fungsi maksimum akan membandingkan seluruh nilai dan menemukan bahwa nilai terbesar adalah 77, sehingga program menampilkan Nilai maksimum = 77. Jika pengguna memilih menu 3, fungsi minimum akan menemukan nilai terkecil yaitu 1, sehingga program menampilkan Nilai minimum = 1. Jika pengguna memilih menu 4, prosedur rataRata menjumlahkan seluruh nilai sehingga diperoleh 200, kemudian 200 dibagi dengan 10 dan menghasilkan rata-rata 20, sehingga program menampilkan Nilai rata - rata = 20.
+Sebagai contoh, sebelum pertukaran, array A berisi 1 2 3, 4 5 6, dan 7 8 9, sedangkan array B berisi 10 20 30, 40 50 60, dan 70 80 90. Ketika fungsi tukarArray(A, B, 1, 1) dipanggil, elemen A pada posisi [1][1] yang bernilai 5 ditukar dengan elemen B pada posisi yang sama yang bernilai 50. Hasilnya, array A menjadi 1 2 3, 4 50 6, dan 7 8 9, sedangkan array B menjadi 10 20 30, 40 5 60, dan 70 80 90. Selanjutnya, sebelum pertukaran pointer dilakukan, variabel x bernilai 100 dan y bernilai 200. Setelah prosedur tukarPointer(p1, p2) dijalankan, nilai x berubah menjadi 200 dan nilai y berubah menjadi 100. Dengan demikian, program berhasil menampilkan isi array, menukarkan elemen dua array pada posisi tertentu, serta menukarkan nilai dua variabel menggunakan pointer.
 
 ## Kesimpulan
 
-Pada praktikum Modul 2 Pengenalan Bahasa C++ (Bagian Kedua), dapat disimpulkan bahwa materi pada modul ini membantu saya dalam memahami penggunaan array, pointer, string, fungsi, prosedur, serta parameter pada bahasa C++. Array dapat digunakan untuk menyimpan sekumpulan data dalam satu variabel, sedangkan pointer dan reference dapat digunakan untuk mengakses atau mengubah nilai suatu variabel melalui alamat atau referensinya. Fungsi dan prosedur juga dapat digunakan untuk membagi program menjadi beberapa bagian sesuai dengan tugasnya.
+Pada praktikum Modul 3 Abstract Data Type (ADT), dapat disimpulkan bahwa materi pada modul ini membahas mengenai konsep ADT, penggunaan struct, fungsi, prosedur, array dua dimensi, serta pointer dalam bahasa C++. ADT digunakan untuk mengelompokkan data dan operasi yang berkaitan, sedangkan pemisahan program ke dalam file header (.h), file implementasi (.cpp), dan program utama (main.cpp) membuat program lebih terstruktur dan modular.
 
-Melalui tiga program unguided yang sudah saya kerjakan, saya memahami penerapan konsep tersebut dalam menyelesaikan permasalahan. Program pertama menerapkan array dua dimensi untuk melakukan operasi penjumlahan, pengurangan, dan perkalian matriks 3×3. Program kedua menerapkan pointer dan reference untuk menukar nilai dari tiga variabel. Program ketiga menerapkan array, fungsi, prosedur, serta pass by reference untuk menampilkan isi array, mencari nilai maksimum dan minimum, serta menghitung nilai rata-rata.
+Melalui satu program guided dan tiga program unguided yang sudah saya kerjakan, saya memahami penerapan konsep tersebut dalam menyelesaikan permasalahan. Program guided menerapkan ADT mahasiswa untuk memasukkan NIM dan dua nilai, kemudian menghitung nilai rata-rata. Program unguided pertama menerapkan struct, array, dan fungsi untuk menyimpan data maksimal 10 mahasiswa serta menghitung nilai akhir berdasarkan nilai UTS, UAS, dan tugas. Program unguided kedua menerapkan ADT pelajaran untuk menyimpan dan menampilkan nama serta kode mata pelajaran dengan memisahkan deklarasi, implementasi, dan program utama. Program unguided ketiga menerapkan array dua dimensi dan pointer untuk menampilkan isi array, menukarkan elemen dari dua array pada posisi tertentu, serta menukarkan nilai dua variabel menggunakan pointer.
 
-Praktikum ini membantu saya dalam memahami cara penggunaan array, pointer, reference, fungsi, prosedur, dan parameter dalam program C++. Selain memahami teori, saya juga dapat menerapkan konsep tersebut untuk membuat program yang dapat menyelesaikan permasalahan sesuai dengan kebutuhan yang diberikan.
+Praktikum ini membantu saya memahami cara menerapkan konsep ADT, struct, fungsi, prosedur, array, dan pointer dalam program C++. Selain memahami teori, saya juga dapat menerapkan konsep-konsep tersebut untuk membuat program yang lebih terstruktur, mengolah data, melakukan perhitungan, serta menukar nilai sesuai dengan kebutuhan yang diberikan.
 
 ## Referensi
 
-[1] Dewi, Luh Joni Erawati. (2012). “Media Pembelajaran Bahasa Pemrograman C++.” Jurnal Pendidikan Teknologi dan Kejuruan, 7(1). Universitas Pendidikan Ganesha. https://doi.org/10.23887/jptk-undiksha.v7i1.31.
+[1] Linden, T. A. (1976). "The Use of Abstract Data Types to Simplify Program Modifications." ACM SIGPLAN Notices, 11(SI), 12–23.
 <br>
-[2] Riyanda, A. R., & Suana, W. (2019). “Pengembangan Modul Pembelajaran Pemrograman Dasar Berbasis Adobe Flash CS6 Bagi Siswa Kelas XI RPL.” Jurnal Pendidikan Teknologi Informasi dan Vokasional, 1(2).
+[2] Sikkel, K., & van Vliet, J. C. (1992). "Abstract Data Types as Reusable Software Components: The Case for Twin ADTs." Software Engineering Journal, 7(3), 177–183.
